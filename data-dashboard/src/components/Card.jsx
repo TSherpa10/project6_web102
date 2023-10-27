@@ -13,7 +13,7 @@ const Card = ({category, desc, extra}) => {
 Card.propTypes = {
   category: PropTypes.string.isRequired,
   desc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  extra: PropTypes.string.isRequired,
+  extra: PropTypes.string,
 };
 
 

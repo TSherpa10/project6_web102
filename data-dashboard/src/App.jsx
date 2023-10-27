@@ -94,22 +94,20 @@ function App() {
 
   const handleResetSlider = () => {
     setSliderVal(0);
-  }
+  };
 
   const handleSubmit = () => {
     let ansList = [...list];
-      console.log(textVal, sliderVal, typeof textVal, typeof sliderVal);
+    console.log(textVal, sliderVal, typeof textVal, typeof sliderVal);
     if (textVal !== "") {
       ansList = ansList.filter(
         (element) =>
-          (element["temperament"].split(/[ ,]+/)[0]).toLowerCase() ===
+          element["temperament"].split(/[ ,]+/)[0].toLowerCase() ===
           textVal.toLowerCase()
       );
     }
     if (sliderVal !== 0) {
-      ansList = ansList.filter(
-        (element) => element["grooming"] === sliderVal
-      );
+      ansList = ansList.filter((element) => element["grooming"] === sliderVal);
     }
 
     setFilteredList(ansList);
@@ -123,7 +121,11 @@ function App() {
           <div className="hero">
             <div className="cards">
               <Card desc={modeOrigin()} category="Most Common Origin" />
-              <Card desc={avg("energy_level").toFixed(2)} category="Avg Energy Level" extra="out of 5" />
+              <Card
+                desc={avg("energy_level").toFixed(2)}
+                category="Avg Energy Level"
+                extra="out of 5"
+              />
               <Card
                 desc={avg("affection_level").toFixed(2)}
                 category="Avg Affection Level"
@@ -156,7 +158,14 @@ function App() {
               </div>
               {list && (
                 <div className="main-data">
-                  <CatInfo key={0} name="Name" origin="Origin" lifespan="Lifespan" description="Description"/>
+                  <CatInfo
+                    key={0}
+                    header="true"
+                    name="Name"
+                    origin="Origin"
+                    lifespan="Lifespan"
+                    description="Description"
+                  />
                   {filteredList === null ? (
                     <>
                       <h2>{`${list.length} total cats as of 2023.`}</h2>
@@ -168,6 +177,8 @@ function App() {
                             origin={element["origin"]}
                             lifespan={element["life_span"]}
                             description={element["description"]}
+                            imageId={element["reference_image_id"]}
+                            temperament={element["temperament"]}
                           />
                         ))}
                       </ul>
@@ -183,6 +194,8 @@ function App() {
                             origin={element["origin"]}
                             lifespan={element["life_span"]}
                             description={element["description"]}
+                            imageId={element["reference_image_id"]}
+                            temperament={element["temperament"]}
                           />
                         ))}
                       </ul>
@@ -192,12 +205,11 @@ function App() {
               )}
             </div>
           </div>
+          <div className="graph-div"></div>
         </div>
       ) : (
         <div className="loading-div">
-          <h1 className="loading-text">
-            Loading the Cat Logs 💨
-          </h1>
+          <h1 className="loading-text">Loading the Cat Logs 💨</h1>
         </div>
       )}
     </>
