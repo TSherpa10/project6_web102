@@ -29,7 +29,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![]()
+![](https://github.com/TSherpa10/project6_web102/blob/main/project6_web102.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Kap
