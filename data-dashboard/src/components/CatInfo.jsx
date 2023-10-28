@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 const CatInfo = ({header, name, origin, lifespan, description, imageId, temperament }) => {
   console.log({ name, origin, lifespan, description, imageId, temperament });
 
-  const toProp = {
-    pathname: `/${name}`,
-    state: { name, origin, lifespan, description, imageId, temperament },
-  };
-
-  console.log(toProp);
+  // const toProp = {
+  //   pathname: `/${name}`,
+  //   state: { name, origin, lifespan, description, imageId, temperament },
+  // };
 
   return header ? (
     <div className="catInfo-div">
@@ -21,7 +19,7 @@ const CatInfo = ({header, name, origin, lifespan, description, imageId, temperam
     </div>
   ) : (
     <div className="catInfo-div">
-      <Link className={`catInfo-text`} to={toProp}>{name}</Link>
+      <Link className={`catInfo-text`} to={`/${name}`} state={{name: name, origin: origin, lifespan: lifespan, description: description, imageId: imageId, temperament: temperament}}>{name}</Link>
       <p className="catInfo-text">{origin}</p>
       <p className="catInfo-text">{lifespan}</p>
       <p className="catInfo-text">{description}</p>

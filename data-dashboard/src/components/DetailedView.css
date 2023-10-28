@@ -1,0 +1,20 @@
+.component-div {
+    margin: 0;
+    width: 80%;
+    margin-left: 10%;
+    height: 120vh;
+}
+
+.detail-btn {
+    width: 200px;
+    height: 50px;
+    margin-bottom: 50px;
+    background-color: #E1C78F;
+    color: black;
+    transition: 0.7s;
+}
+
+.detail-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.7;
+}

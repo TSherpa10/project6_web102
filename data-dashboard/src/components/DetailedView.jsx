@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import "./DetailedView.css";
 
 const DetailedView = () => {
   let location = useLocation();
-  console.log("location from useLocation", location);
   let catInfo = location.state;
-  console.log("passed states:", catInfo);
-  let params = useParams();
   const [dict, setDict] = useState(null);
 
   const API_KEY = import.meta.env.VITE_APP_API_KEY;
@@ -15,7 +13,7 @@ const DetailedView = () => {
     const getImage = async () => {
       try {
         const response = await fetch(
-          `https://api.thecatapi.com/v1/images/0XYvRd7oD?api_key=${API_KEY}`
+          `https://api.thecatapi.com/v1/images/${catInfo?.imageId}?api_key=${API_KEY}`
         );
         const json = await response.json();
         console.log(json);
@@ -31,12 +29,18 @@ const DetailedView = () => {
     <>
       {dict && (
         <div className="component-div">
-          <h1>The {params.name} catto.</h1>
+          <h1>The {catInfo?.name} catto.</h1>
           <div className="detailedview-div">
             <img src={dict?.url} alt={console.log(!!dict?.url == false)} />
-            <h3>{catInfo?.temperament}</h3>
+            <h2>{`Origin: ${catInfo?.origin}`}</h2>
+            <h3>{`Average Lifespan (years): ${catInfo?.lifespan} years`}</h3>
+            <h3>{`Traits: ${catInfo?.temperament}`}</h3>
+            <p>{`Description: ${catInfo?.description}`}</p>
             <h4></h4>
           </div>
+          <button className="detail-btn">
+            <Link to="/">Back</Link>
+          </button>
         </div>
       )}
     </>
